@@ -61,7 +61,6 @@ SHMI_analysis_bodge = spark.table("hes_and_hes_ons_ns_ml_collab.shmi_analysis_bo
 from pyspark.sql import functions as F
 from pyspark.sql import DataFrame as df
 
-#SHMI_analysis_bodge.withColumn('Peptic ucler', when(F.col('DIAG_4_CONCAT').))
 elixhauser_group_list_dict = dict( #This list was created from the SHMI specification
     Congestive_Heart_Failure = ['I099','I110','I130','I132','I255','I420','I425','I426','I427','I428',
                           'I429','I43','I50','P290']
@@ -138,12 +137,6 @@ for condition in elixhauser_group_conditions_list:
   SHMI_analysis_bodge = SHMI_analysis_bodge.withColumn(condition, SHMI_analysis_bodge[condition].cast(BooleanType()))
 
 unbalanced_class_df = SHMI_analysis_bodge.drop('DIAG_4_CONCAT')
-
-
-# COMMAND ----------
-
-# DBTITLE 1,Look at the data to see if its alright and in spells
-SHMI_analysis_bodge[SHMI_analysis_bodge['SUSSPELLID'].isin(list_of_multiple_episodes)].set_index('SUSSPELLID').sort_index()
 
 # COMMAND ----------
 
