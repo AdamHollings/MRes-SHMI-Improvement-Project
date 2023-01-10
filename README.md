@@ -1,6 +1,8 @@
 # Using alternative modelling methods and more granular diagnosis encoding for the Summary Hospital-level Mortality Indicator (SHMI) 
 An MRes final project for Adam Hollings on improving the Summary Hospital Mortality Indicator (SHMI) funded through my employer, NHS Digital (soon NHS England) at the University of Leeds. 
 
+By Adam Hollings (adam.hollings1@nhs.net)
+
 ## Abstract
 ### Objectives:
 SHMI does not score well when modelling some diagnosis groups despite using ROC AUC score which is forgiving when class imbalance is high. This study aimed to explore the effect on scores of replacing the Charlson index score with up to 260 one hot encoded diagnosis features as well as testing lasso regression and XGboost instead of the current SHMI ridge regression models. It also used PR AUC score instead of ROC AUC score.
